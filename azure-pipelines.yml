@@ -31,39 +31,3 @@ steps:
     sourceImageTag: '$(Parameters.sourceImageTag)'
     repositoryName: 'ahossam-onica'
     pushTag: '$(Parameters.pushTag)'
-
-- task: CopyFiles@2
-  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-  inputs:
-    SourceFolder: web
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-#Your build pipeline references an undefined variable named ‘Parameters.includeSourceTags’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-#Your build pipeline references an undefined variable named ‘Parameters.includeLatestTag’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-
-- task: Docker@1
-  displayName: 'Build an image'
-  inputs:
-    containerregistrytype: 'Container Registry'
-    includeSourceTags: '$(Parameters.includeSourceTags)'
-    includeLatestTag: '$(Parameters.includeLatestTag)'
-
-#Your build pipeline references an undefined variable named ‘Parameters.sourceImageTag’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-#Your build pipeline references an undefined variable named ‘Parameters.pushTag’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-
-- task: AmazonWebServices.aws-vsts-tools.ECRPushImage.ECRPushImage@1
-  displayName: 'Push Image: Docker to ECR'
-  inputs:
-    awsCredentials: 'AWS_ECR_conn'
-    regionName: 'us-east-1'
-    sourceImageName: '$(Build.Repository.Name)'
-    sourceImageTag: '$(Parameters.sourceImageTag)'
-    repositoryName: 'ahossam-onica'
-    pushTag: '$(Parameters.pushTag)'
-
-
-
-
-
-
-
