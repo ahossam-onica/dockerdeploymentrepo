@@ -1,0 +1,26 @@
+#Your build pipeline references an undefined variable named ‘Parameters.sourceImageTag’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+
+#Your build pipeline references an undefined variable named ‘Parameters.pushTag’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+
+
+
+steps:
+
+- task: AmazonWebServices.aws-vsts-tools.ECRPushImage.ECRPushImage@1
+
+  displayName: 'Push Image: Docker to ECR'
+
+  inputs:
+
+    awsCredentials: 'AWS_ECR_conn'
+
+    regionName: 'us-east-1'
+
+    sourceImageName: '$(Build.Repository.Name)'
+
+    sourceImageTag: '$(Parameters.sourceImageTag)'
+
+    repositoryName: 'ahossam-onica'
+
+    pushTag: '$(Parameters.pushTag)'
+
