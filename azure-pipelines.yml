@@ -1,5 +1,8 @@
+trigger:
+- master
+
 pool:
-  name: Azure Pipelines
+  vmImage: 'ubuntu-latest'
 #Your build pipeline references an undefined variable named ‘Parameters.includeSourceTags’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
 #Your build pipeline references an undefined variable named ‘Parameters.includeLatestTag’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
 #Your build pipeline references an undefined variable named ‘Parameters.sourceImageTag’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
